@@ -1,9 +1,8 @@
 import express from 'express'
-import { nanoid } from 'nanoid'
 import dotenv from "dotenv"
 import connectDB from './src/config/mongoose.config.js'
 import urlSchema from "./src/models/shorturl.model.js"
-import shortUrl from './src/models/shorturl.model.js'
+import short_url from "./src/routes/short_url.route.js"
 const app = express()
 dotenv.config({ path: './.env'})
 
@@ -19,25 +18,7 @@ app.get("/",(req,res)=>{
 
 
 
-app.post('/api/create', (req, res)=>{
-    const { url } = req.body
-    if(!url){
-        return res.status(400).json({
-            error: 'URL is required'
-        })
-    }
-
-    const shortUrl = nanoid(7)
-    const newUrl = new urlSchema({
-        full_url:url,
-        short_url:shortUrl
-    })
-
-    newUrl.save()
-
-    
-    res.send(nanoid(7))
-})
+app.post('/api/create', short_url)
 
 
 app.get('/:id', async(req,res)=>{
