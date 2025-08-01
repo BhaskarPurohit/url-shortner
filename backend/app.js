@@ -34,6 +34,8 @@ app.post('/api/create', (req, res)=>{
     })
 
     newUrl.save()
+
+    
     res.send(nanoid(7))
 })
 
