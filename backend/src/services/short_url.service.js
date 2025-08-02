@@ -3,7 +3,7 @@ import urlSchema from "../models/shorturl.model.js"
 
  const createShortUrlService = async(url)=>{
     
-    const shorturl = generateNanoId(7)
+    const shorturl = await generateNanoId(7)
     const newUrl = new urlSchema({
         full_url:url,
         short_url:shorturl
