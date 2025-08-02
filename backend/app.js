@@ -18,7 +18,7 @@ app.get("/",(req,res)=>{
 
 
 
-app.post('/api/create', short_url)
+app.use('/', short_url)
 
 
 app.get('/:id', async(req,res)=>{
