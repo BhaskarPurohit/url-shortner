@@ -1,5 +1,5 @@
 import shortUrl from "../models/shorturl.model.js"
-import createShortUrlService from "../services/short_url.service.js"
+import {createShortUrlService} from "../services/short_url.service.js"
 
 
 export const createShortUrl = async(req,res) =>{
@@ -10,8 +10,7 @@ export const createShortUrl = async(req,res) =>{
     const domain = process.env.BASE_URL || 'http://localhost:3000'
     res.status(201).json({
         message: "Short URL created",
-        full_url:shortUrl.full_url,
-        short_url:`${domain}/${shortUrl.short_url}`
+        short_url: `http://localhost:3000/${newUrl.short_url}`
     })
    }catch(err){
     console.log("Error creating short url: ", err);
