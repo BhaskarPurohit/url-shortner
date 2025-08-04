@@ -1,3 +1,4 @@
+import shortUrl from "../models/shorturl.model.js"
 import urlSchema from "../models/shorturl.model.js"
 export const saveShortUrl = async(shortUrl, longUrl, userId) =>{
     const newUrl = new urlSchema({
@@ -10,4 +11,8 @@ export const saveShortUrl = async(shortUrl, longUrl, userId) =>{
     }
 
     return newUrl.save()
+}
+
+export const getShortUrl = async (shortUrl) =>{
+    return await urlSchema.findOne({ short_url:shortUrl }, {$inc:{clicks:1}})
 }
