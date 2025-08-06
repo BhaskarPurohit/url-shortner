@@ -4,8 +4,12 @@ import {createShortUrlWithUser, createShortUrlWithoutUser} from "../services/sho
 
 export const createShortUrl = async(req,res) =>{
     const {url} = req.body
-    const shortUrl = await createShortUrlWithoutUser(url)
-    res.send(process.env.APP_URL + shortUrl)
+    const savedUrl = await createShortUrlWithoutUser(url)
+    const baseUrl = process.env.APP_URL || 'http://localhost:3000'
+    res.status(201).json({
+        message:"Short URL created",
+        short_url: `${baseUrl}/${savedUrl.short_url}`
+    })
 }
 
 export const redirectFromShortUrl = async(req,res)=>{

@@ -3,7 +3,10 @@ import dotenv from "dotenv"
 import connectDB from './src/config/mongoose.config.js'
 import urlSchema from "./src/models/shorturl.model.js"
 import short_url from "./src/routes/short_url.route.js"
+import cors from "cors"
 const app = express()
+
+app.use(cors())
 dotenv.config({ path: './.env'})
 
 app.use(express.json())

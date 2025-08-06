@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
+import ShortenForm from './components/ShortenForm'
 
 const App = () => {
-  return (
-    <div className='bg-pink-300'>App</div>
+  return(
+    <ShortenForm/>
   )
-}
 
+}
 export default App
